@@ -29,23 +29,11 @@ interface State {
 }
 
 const getFirstPinyin = (data: Data) => {
-  return (data.pinyin.split(/\s+/).shift() || "")
-    .replace(/[āáǎà]/g, "a")
-    .replace(/[ōóǒò]/g, "o")
-    .replace(/[ēéěèê]/g, "e")
-    .replace(/[īíǐì]/g, "i")
-    .replace(/[ūúǔù]/g, "u")
-    .replace(/[ǖǘǚǜü]/g, "v");
+  return data.pinyin.split(/\s+/).shift() || "";
 };
 
 const getLastPinyin = (data: Data) => {
-  return (data.pinyin.split(/\s+/).pop() || "")
-    .replace(/[āáǎà]/g, "a")
-    .replace(/[ōóǒò]/g, "o")
-    .replace(/[ēéěèê]/g, "e")
-    .replace(/[īíǐì]/g, "i")
-    .replace(/[ūúǔù]/g, "u")
-    .replace(/[ǖǘǚǜü]/g, "v");
+  return data.pinyin.split(/\s+/).pop() || "";
 };
 
 const fix = (data: Data) => {
@@ -77,7 +65,7 @@ const indexed = (json: Data[]) => {
       result.word[data.word] = data;
     }
   }
-  let pinyins = new Set(["zhou"]);
+  let pinyins = new Set(["zhōu"]);
   for (let level = 1; pinyins.size > 0; ++level) {
     const newpinyins = new Set<string>();
     pinyins.forEach(pinyin => {
@@ -123,10 +111,6 @@ function App() {
   if (Object.keys(state.word).length > 0) {
     return (
       <div className="markdown-body">
-        <div className="bg">
-
-        </div>
-
         <h1>
           <span style={{ color: "pink" }}>周周</span>可爱
         </h1>
