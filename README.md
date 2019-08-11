@@ -8,8 +8,6 @@ https://zzka.noddl.me
 
 ## Secondary Development
 
-### Modify Pinyin of the first word
-
 1. Replace Pinyin of your idiom word in the `indexed` function
 
 ```js
