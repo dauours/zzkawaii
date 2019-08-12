@@ -3,7 +3,18 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 import "./github-markdown.css";
-import bg from "./watermelon.png";
+
+interface EasterEgg {
+  triggerWord: string;
+  display: string;
+}
+
+const EasterEggs: EasterEgg[] = [
+  {
+    triggerWord: "周周可爱",
+    display: "我也觉得周周超可爱的"
+  }
+];
 
 interface Data {
   abbreviation: string;
@@ -85,6 +96,12 @@ const indexed = (json: Data[]) => {
 const handle = (input: string, state: State) => {
   const result: string[] = [];
   let data = state.word[input];
+  for (const egg of EasterEggs) {
+    if (egg.triggerWord === input) {
+      result.push(egg.display);
+      return result;
+    }
+  }
   while (data && data.level) {
     const level = data.level;
     result.push(`${data.word}（${data.pinyin}）`);
