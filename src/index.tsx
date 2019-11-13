@@ -58,19 +58,17 @@ const indexed = (json: Data[]) => {
   const result: State = { firstPinyin: {}, lastPinyin: {}, word: {} };
   for (const data of json) {
     fix(data);
-    if (data.word.length === 4) {
-      const key1 = getLastPinyin(data);
-      const values1 = result.lastPinyin[key1] || [];
-      result.lastPinyin[key1] = values1;
-      values1.push(data);
+    const key1 = getLastPinyin(data);
+    const values1 = result.lastPinyin[key1] || [];
+    result.lastPinyin[key1] = values1;
+    values1.push(data);
 
-      const key2 = getFirstPinyin(data);
-      const values2 = result.firstPinyin[key2] || [];
-      result.firstPinyin[key2] = values2;
-      values2.push(data);
+    const key2 = getFirstPinyin(data);
+    const values2 = result.firstPinyin[key2] || [];
+    result.firstPinyin[key2] = values2;
+    values2.push(data);
 
-      result.word[data.word] = data;
-    }
+    result.word[data.word] = data;
   }
   let pinyins = new Set(["zhōu"]);
   for (let level = 1; pinyins.size > 0; ++level) {
