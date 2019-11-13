@@ -7,7 +7,9 @@ const fs = require("fs");
 fs.readFile("./idiom.json", (err, buffer) => {
   if (err) throw err;
   const idioms = JSON.parse(buffer.toString());
-  const result = idioms.map(idiom => {
+  const result = idioms.filter(idiom => {
+    return idiom["word"].length === 4
+  }).map(idiom => {
     return {
       pinyin: idiom["pinyin"],
       word: idiom["word"]
