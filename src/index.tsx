@@ -17,10 +17,6 @@ const EasterEggs: EasterEgg[] = [
 ];
 
 interface Data {
-  abbreviation: string;
-  derivation: string;
-  example: string;
-  explanation: string;
   pinyin: string;
   word: string;
   level?: number;
@@ -159,7 +155,7 @@ function App() {
     );
   } else {
     const url =
-      "https://cdn.jsdelivr.net/gh/pwxcoo/chinese-xinhua/data/idiom.json";
+      "https://cdn.jsdelivr.net/gh/dcalsky/zzkawaii/resources/idioms.json";
     fetch(url)
       .then(res => res.json())
       .then(json => setState(indexed(json)))
